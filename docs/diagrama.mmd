@@ -1,0 +1,21 @@
+classDiagram
+    direction TB
+    class ParteDoCarro {
+        <<abstract>>
+        -String nome
+        +getNome() String
+        +somarPeso(int totalParcial)* int
+    }
+    class Peca {
+        -int peso
+        +getPeso() int
+        +somarPeso(int totalParcial) int
+    }
+    class ConjuntoDePecas {
+        -List~ParteDoCarro~ partes
+        +adicionar(ParteDoCarro parte)
+        +somarPeso(int totalParcial) int
+    }
+    ParteDoCarro <|-- Peca
+    ParteDoCarro <|-- ConjuntoDePecas
+    ConjuntoDePecas o-- "1..*" ParteDoCarro : partes
